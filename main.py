@@ -3,29 +3,14 @@ import window
 
 def main():
     screen = window.Window()
-    screen.render([
-        "#   1",
-        "##   2",
-        "###   3",
-        "#1",
-        "##2",
-        "###3",
-        "",
-        "Hello world",
-        "",
-        "> What color is purple?",
-        "-Xander 2023",
-        "",
-        "=> https://xkcd.com/ xkcd webcomic",
-        "",
-        "* List element 1",
-        "* Item 2",
-        "* I'm a third item",
-        "```",
-        "print(\"Hello, world!\")",
-        "return 0",
-        "```",
-    ])
+    with open("test.gmi", "r") as f:
+        lines = f.readlines()
+        for line in range(len(lines)):
+            lines[line] = lines[line][:-1]
+        print(lines)
+        f.close()
+
+    screen.render(lines)
     screen.mainloop()
 
 
